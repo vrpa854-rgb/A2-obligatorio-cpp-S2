@@ -71,7 +71,7 @@ class AVL {
             }
         }
         void Insertar(T dato) {
-            if(InsertarRec(dato, this->raiz, 0)) {
+            if(InsertarRec(dato, this->raiz)) {
                 this->capacidad++;
             }
 
