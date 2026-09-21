@@ -16,3 +16,9 @@
 ## AAAA-MM-DD — En conjunto
 - Ejemplo: Implementamos ... Bug: ... Lo corregimos ...
 - Pasan los casos de prueba 1 a 4 del ejercicio 1.
+
+## 2026-09-16 - Lucía Mottillo
+- Leí la letra del ejercicio 1, empecé a hacer bocetos de como debería de ser. 
+  Empecé a programar y dejé planteada una idea que sirve (da el resultado esperado).
+  Falta chequear que cumpla con la complejidad.
+
