@@ -22,3 +22,6 @@
   Empecé a programar y dejé planteada una idea que sirve (da el resultado esperado).
   Falta chequear que cumpla con la complejidad.
 
+## 2026-09-23 - Lucía Mottillo
+- Agregué el tad del grafo, basado en lo que trabajamos en clase.
+
