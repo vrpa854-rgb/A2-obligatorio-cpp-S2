@@ -40,3 +40,9 @@
 
 ## 2026-09-27 - Venancio Portillo
 -Agregué las rotaciones al TAD AVL.
+
+## 2026-10-02 - Venancio Portillo
+-Validé y ajusté las restricciones del ejercicio 1. Creé los métodos Existe y InOrderRango para el AVL.
+ La única forma que encontré de cumplir la restricción temporal O(logK + R) PC era crear el método InOrderRango dentro del AVL.
+ Faltó correr las pruebas. Estoy armando los scritps para automatizarlas.
+

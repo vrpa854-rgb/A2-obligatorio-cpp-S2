@@ -84,6 +84,22 @@ class AVL {
 
             return insertado;
         }
+        
+
+        bool ExisteRec(T dato, Nodo*& nodoActual) {
+            bool encontrado = false;
+            if (!nodoActual){
+                return false;
+            } else if(Comparar(nodoActual->dato,dato) == 0) {
+                return true;
+            } else if(Comparar(dato,nodoActual->dato) < 0) {
+                encontrado = ExisteRec(dato, nodoActual->izq);
+            } else if (Comparar(dato,nodoActual->dato) > 0) {
+                encontrado = ExisteRec(dato, nodoActual->der);
+            }
+
+            return encontrado;
+        }
 
         void inOrderRec(Nodo*& nodoActual) {
             if(!nodoActual) return;
@@ -91,6 +107,21 @@ class AVL {
             cout << nodoActual->dato << endl;
             inOrderRec(nodoActual->der);
         }
+
+        void inOrderRangoRec(Nodo*& nodoActual, T desde, T hasta) {
+            if (!nodoActual) return;
+
+            if(Comparar(desde, nodoActual->dato) < 0) {
+                inOrderRangoRec(nodoActual->izq, desde, hasta);
+            } 
+            if(Comparar(desde, nodoActual->dato) <= 0 && Comparar(hasta, nodoActual->dato) >= 0) {
+                cout << nodoActual->dato << endl;
+            }
+            if(Comparar(hasta, nodoActual->dato) > 0) {
+                inOrderRangoRec(nodoActual->der, desde, hasta);
+            }
+        }
+        
         void destruirRec(Nodo* nodoActual) {
             if(!nodoActual) return;
             destruirRec(nodoActual->izq);
@@ -113,10 +144,21 @@ class AVL {
             }
         }
 
-        
-        void inOrder() {
+        bool EstaVacio() {
+            return this->capacidad==0;
+        }
+
+        bool Existe(T dato) {
+            return ExisteRec(dato, this->raiz);
+        }
+
+        void InOrder() {
             cout << "InOrder: ";
             inOrderRec(raiz);
             cout << "\n";
+        }
+        
+        void InOrderRango(T desde, T hasta) {
+            inOrderRangoRec(raiz, desde, hasta);
         }
 };

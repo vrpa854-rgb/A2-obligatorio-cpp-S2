@@ -1,129 +1,73 @@
-#include <cassert>
 #include <string>
 #include <iostream>
-#include <limits>
-#include <algorithm>
-#include <cctype>
-#include "tads/ListImp.cpp"
-#include <sstream>
+#include "tads/AVL.cpp"
 
 using namespace std;
 
+int compareInts(int a, int b) {
+    return a < b ? -1 : a > b ? 1 : 0;
+}
+
+int compareStr(string a, string b){
+    return a.compare(b);
+}
 int main()
 {
     int n;
-    ListImp<int> monedas;
-    ListImp<string> pinturas;
+    AVL<int> * monedas = new AVL(compareInts);
+    AVL<string> * pinturas = new AVL(compareStr);
     cin >> n;
-    cin.ignore();
-    cout << " "<< endl;
+    
     for (int i = 0; i < n; i++)
     {
-        string linea;
-        getline(cin, linea);
-        stringstream ss(linea);
         string comando;
-        ss >> comando;
+        cin >> comando;
         if (comando == "ALTA")
         {
-            ss >> comando;
+            cin >> comando;
             if (comando == "M")
             {
                 int valor;
-                ss >> valor;
-                if (monedas.isEmpty() || valor > monedas.get(monedas.getSize() - 1)) {
-                    monedas.insert(valor);
-                } else {
-                    int index = 0;
-                    while (index < monedas.getSize() && monedas.get(index) < valor) {
-                        index++;
-                    }
-                    if (monedas.get(index) != valor) {
-                        monedas.insertAt(index, valor);
-                    }
-                }
+                cin >> valor;
+                monedas->Insertar(valor);
             }
             else if (comando == "P")
             {
-                string nombre;
-                ss >> nombre;
-                for (auto &c : nombre) c = tolower(c);
-                if (pinturas.isEmpty() || nombre > pinturas.get(pinturas.getSize() - 1)) {
-                    pinturas.insert(nombre);
-                } else {
-                    int index = 0;
-                    while (index < pinturas.getSize() && pinturas.get(index) < nombre) {
-                        index++;
-                    }
-                    if (pinturas.get(index) != nombre) {
-                        pinturas.insertAt(index, nombre);
-                    }
-                }
+                string valor;
+                cin >> valor;
+                pinturas->Insertar(valor);
             }
         }
         else if (comando == "BUSCAR")
         {
-            ss >> comando;
+            cin >> comando;
             if (comando == "M")
             {
                 int valor;
-                ss >> valor;
-                bool existe = false;
-                for (int idx = 0; idx < monedas.getSize(); idx++)
-                {
-                    if (monedas.get(idx) == valor)
-                    {
-                        existe = true;
-                        break;
-                    }
-                }
-                cout << (existe ? "si" : "no") << endl;
+                cin >> valor;
+                cout << (monedas->Existe(valor) ? "si" : "no") << endl;
             }
             else if (comando == "P")
             {
-                string nombre;
-                ss >> nombre;
-                for (auto &c : nombre) c = tolower(c);
-                bool existe = false;
-                for (int idx = 0; idx < pinturas.getSize(); idx++)
-                {
-                    if (pinturas.get(idx) == nombre)
-                    {
-                        existe = true;
-                        break;
-                    }
-                }
-                cout << (existe ? "si" : "no") << endl;
+                string valor;
+                cin >> valor;
+                cout << (pinturas->Existe(valor) ? "si" : "no") << endl;
             }
         }
         else if (comando == "RANGO")
         {
-            ss >> comando;
+            cin >> comando;
             if (comando == "M")
             {
-                int min, max;
-                ss >> min >> max;
-                for (int idx = 0; idx < monedas.getSize(); idx++)
-                {
-                    int moneda = monedas.get(idx);
-                    if (moneda >= min && moneda <= max)
-                    {
-                        cout << moneda << endl;
-                    }
-                }
+                int desde, hasta;
+                cin >> desde >> hasta;
+                monedas->InOrderRango(desde, hasta);
             }
             else if (comando == "P")
             {
-                string min, max;
-                ss >> min >> max;
-                for (int idx = 0; idx < pinturas.getSize(); idx++)
-                {
-                    string pintura = pinturas.get(idx);
-                    if (pintura >= min && pintura <= max)
-                    {
-                        cout << pintura << endl;
-                    }
-                }
+                string desde, hasta;
+                cin >> desde >> hasta;
+                pinturas->InOrderRango(desde, hasta);
             }
         }
     }
