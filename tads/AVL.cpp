@@ -1,4 +1,9 @@
+#pragma once
 
+#include <string>
+#include <iostream>
+#include <cstring>
+using namespace std;
 
 template <class T>
 class AVL {
@@ -84,9 +89,8 @@ class AVL {
 
             return insertado;
         }
-        
 
-        bool ExisteRec(T dato, Nodo*& nodoActual) {
+        bool ExisteRec(T dato, Nodo* nodoActual) {
             bool encontrado = false;
             if (!nodoActual){
                 return false;
@@ -121,13 +125,14 @@ class AVL {
                 inOrderRangoRec(nodoActual->der, desde, hasta);
             }
         }
-        
+
         void destruirRec(Nodo* nodoActual) {
             if(!nodoActual) return;
             destruirRec(nodoActual->izq);
             destruirRec(nodoActual->der);
             delete nodoActual;
         }
+
     public:
         AVL(int (*fComp)(T,T)) {
             this->raiz = NULL;
@@ -159,6 +164,6 @@ class AVL {
         }
         
         void InOrderRango(T desde, T hasta) {
-            inOrderRangoRec(raiz, desde, hasta);
+           inOrderRangoRec(raiz, desde, hasta);
         }
 };

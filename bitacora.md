@@ -46,3 +46,6 @@
  La única forma que encontré de cumplir la restricción temporal O(logK + R) PC era crear el método InOrderRango dentro del AVL.
  Faltó correr las pruebas. Estoy armando los scritps para automatizarlas.
 
+## 2026-10-07 - Venancio Portillo
+-Ajusté detalles y probé el ejercicio 1. Pasó todas las pruebas. Detecté por hacer que RANGO aún no valída O(logK + R),  falta cambiarlo.
+Agregué una primera idea de la justificación de ordenes

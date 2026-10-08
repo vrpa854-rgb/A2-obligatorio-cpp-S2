@@ -8,7 +8,12 @@
 > restricciones de órdenes, indicarlo.
 
 ## Ejercicio 1
-- Sin restricciones de órdenes. / Justificación: ...
+Primera idea:
+- ALTA y BUSCAR en orden temporal O(logK) en el peor caso, siendo K la cantidad de piezas
+registradas en esa colección al momento de ejecutar la operación. / Justificación: La acción ALTA y BUSCAR se realizan con los método Insertar y Existe del AVL, respectivamente. Estas dos operaciones son O(logK) PC porque es el orden de insertar y buscar un elemento en un AVL.
+
+-RANGO en orden temporal O(logK+R) en el peor caso, siendo R la cantidad de piezas que esa consulta reporta. / Justificación: Se utilizó como referencia la operación InOrden que es O(logK) en caso promedio. Como sigue la misma lógica, es del mismo orden. No pudimos lograr ese orden en el peor caso. 
+
 
 ## Ejercicio 2
 - Sin restricciones de órdenes. / Justificación: ...
