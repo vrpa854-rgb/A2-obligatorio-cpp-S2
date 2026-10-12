@@ -9,19 +9,11 @@
 > abiertas. Si se usó IA ese día, indicar herramienta, consulta y qué se hizo con la
 > respuesta. Una bitácora escrita íntegramente el día de la entrega implica pérdida de puntos.
 
-## AAAA-MM-DD — Nombre
-- Ejemplo: Leí la letra del ejercicio 1. Primera idea: ... pero la restricción de
-  complejidad pide ..., así que ...
-
-## AAAA-MM-DD — En conjunto
-- Ejemplo: Implementamos ... Bug: ... Lo corregimos ...
-- Pasan los casos de prueba 1 a 4 del ejercicio 1.
-
 ## 2026-09-06 - Venancio Portillo
--Comencé a crear el TAD Hash Table basado en lo dado en clase.
+- Comencé a crear el TAD Hash Table basado en lo dado en clase.
 
 ## 2026-09-14 - Venancio Portillo
--Comencé a crear el TAD AVL basado en lo dado en clase.
+- Comencé a crear el TAD AVL basado en lo dado en clase.
 
 ## 2026-09-16 - Lucía Mottillo
 - Leí la letra del ejercicio 1, empecé a hacer bocetos de como debería de ser. 
@@ -32,17 +24,20 @@
 - Agregué el tad del grafo, basado en lo que trabajamos en clase.
 
 ## 2026-09-27 - Venancio Portillo
--Agregué el rehash a la tabla de hash. Primero dividí el problema en 4 partes: Creación del nuevo vector, rehashing, limpieza y actualización.
+- Agregué el rehash a la tabla de hash. Primero dividí el problema en 4 partes: Creación del nuevo vector, rehashing, limpieza y actualización.
  La creación del nuevo vector empieza por duplicar su capacidad, obtener un nuevo primo superior y generar el nuevo vector con esa base.
  El rehash recorre todo el vector viejo con dos condiciones base: Si no hay nodo, sigo; si está borrado no lo paso y limpio la memoria.
  Luego avanzo en el vector nuevo hasta encontrar un lugar disponible y guardo el nodo. Como utilizo punteros, puedo pasarlos de forma sencilla y clara. Esto lo puedo hacer porque las condiciones anteriores me aseguran que no existirán nodos borrados. A diferencia de el método Insertar que debo verificarlo.
  Al final, elimino el vector viejo para liberar la memoria y actualizo el hash a los valores del nuevo vector.
 
 ## 2026-09-27 - Venancio Portillo
--Agregué las rotaciones al TAD AVL.
+- Agregué las rotaciones al TAD AVL.
 
 ## 2026-10-02 - Venancio Portillo
--Validé y ajusté las restricciones del ejercicio 1. Creé los métodos Existe y InOrderRango para el AVL.
+- Validé y ajusté las restricciones del ejercicio 1. Creé los métodos Existe y InOrderRango para el AVL.
  La única forma que encontré de cumplir la restricción temporal O(logK + R) PC era crear el método InOrderRango dentro del AVL.
  Faltó correr las pruebas. Estoy armando los scritps para automatizarlas.
 
+## 2026-10-12 - Lucía Mottillo
+- Agregué el TAD de heap como lo vimos en clase.
+- Hice el ejercicio 3. Utilicé Heap (hice un minHeap) ya que la letra misma lo pide. Para resolver el ejercicio primero intenté haciendo una lista, a la cual le cargué todos los datos y de ahí cargarlo al minHeap pero no cumplía con las resticciones, por ende, primero se carga todo al heap y luego se va agarrando de a dos (agarro el tope, lo elimino, agarro el nuevo tope) e insertando y eliminando hsta que quede solamente la suma resultante.
