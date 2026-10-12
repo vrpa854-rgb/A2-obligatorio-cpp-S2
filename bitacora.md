@@ -38,6 +38,9 @@
  La única forma que encontré de cumplir la restricción temporal O(logK + R) PC era crear el método InOrderRango dentro del AVL.
  Faltó correr las pruebas. Estoy armando los scritps para automatizarlas.
 
+## 2026-10-07 - Venancio Portillo
+-Ajusté detalles y probé el ejercicio 1. Pasó todas las pruebas. Detecté por hacer que RANGO aún no valída O(logK + R),  falta cambiarlo.
+Agregué una primera idea de la justificación de ordenes
 ## 2026-10-12 - Lucía Mottillo
 - Agregué el TAD de heap como lo vimos en clase.
 - Hice el ejercicio 3. Utilicé Heap (hice un minHeap) ya que la letra misma lo pide. Para resolver el ejercicio primero intenté haciendo una lista, a la cual le cargué todos los datos y de ahí cargarlo al minHeap pero no cumplía con las resticciones, por ende, primero se carga todo al heap y luego se va agarrando de a dos (agarro el tope, lo elimino, agarro el nuevo tope) e insertando y eliminando hsta que quede solamente la suma resultante.
