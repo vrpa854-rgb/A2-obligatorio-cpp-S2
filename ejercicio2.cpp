@@ -11,7 +11,7 @@ int funcHash(string clave) {
     for (int i = 0; i < clave.length(); i++) {
         h = 31 * h + clave[i];
     }
-    return (int)(h % 1000000007ULL);
+    return h;
 }
 
 string armarClave(const string& palabra) {
