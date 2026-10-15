@@ -39,9 +39,16 @@
  Faltó correr las pruebas. Estoy armando los scritps para automatizarlas.
 
 ## 2026-10-07 - Venancio Portillo
--Ajusté detalles y probé el ejercicio 1. Pasó todas las pruebas. Detecté por hacer que RANGO aún no valída O(logK + R),  falta cambiarlo.
+- Ajusté detalles y probé el ejercicio 1. Pasó todas las pruebas. Detecté por hacer que RANGO aún no valída O(logK + R),  falta cambiarlo.
 Agregué una primera idea de la justificación de ordenes
 
 ## 2026-10-12 - Lucía Mottillo
 - Agregué el TAD de heap como lo vimos en clase.
 - Hice el ejercicio 3. Utilicé Heap (hice un minHeap) ya que la letra misma lo pide. Para resolver el ejercicio primero intenté haciendo una lista, a la cual le cargué todos los datos y de ahí cargarlo al minHeap pero no cumplía con las resticciones, por ende, primero se carga todo al heap y luego se va agarrando de a dos (agarro el tope, lo elimino, agarro el nuevo tope) e insertando y eliminando hsta que quede solamente la suma resultante.
+
+## 2026-10-14 - Lucía Mottillo
+- Empecé el ejercicio 2, estuve pensando cómo armar la función hash para que sea la más óptima posible y haya la menor canttidad de coalisiones. Mi idea inicial era sumar el valor de las letras (A - 1, B - 2, ..., Z - 26) pero hay varios valores que pueden tener el mismo resultado, luego se me ocurrió armar un array de bool de largo 26 y poner true cuando está la letra, pero no permite letras repetidas, por lo que concluí en un array de largo 26 de int, que pone la cantidad de veces que aparece una letra. A base de eso se arma la clave que se utiliza en la función hash junto con la regla de Horner.
+
+## 2026-10-15
+- Modifiqué el TAD de Hash, porque el que teníamos era para Hash cerrado y el ejercicio pide que sea abierto.
+- Hice el ejercicio 3.

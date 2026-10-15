@@ -7,9 +7,9 @@ class Hash {
         struct bucket{
             K clave;
             V valor;
-            bool estaBorrado;
+            bucket* sig;
 
-            bucket(K clave, V valor) : clave(clave), valor(valor), estaBorrado(false){}
+            bucket(K clave, V valor) : clave(clave), valor(valor), sig(nullptr){}
         };
 
         bucket* * vec;
@@ -44,22 +44,16 @@ class Hash {
             int nLargoVec = primoSup(nCapacidad);
             bucket ** nVec = new bucket*[nLargoVec]();
 
-            //Rehash
+            //Rehash - recorre la lista e inserta al principio
             for(int i=0; i<this->largoVec; i++) {
                 bucket* nodo = vec[i];
-                if(!node) continue;
-
-                //No precisa pasarlos
-                if(nodo->estaBorrado) {
-                    delete nodo;
-                    continue;
+                while(nodo){
+                    bucket* sig = nodo->sig;
+                    int pos = abs(fHash(nodo->clave)) % nLargoVec;
+                    nodo->sig = nVec[pos];
+                    nVec[pos] = nodo;
+                    nodo = sig;
                 }
-
-                int pos = abs(fHash(nodo->clave)) % nLargoVec;
-                while(nVec[pos]){
-                    pos=(pos+1)%nLargoVec;
-                }
-                nVec[pos] = nodo;
             }   
             
             //Eliminar el anterior y actualizar
@@ -87,22 +81,9 @@ class Hash {
         // Pre: !Existe(clave)
         void Insertar(K clave, V valor){
             int pos = abs(fHash(clave)) % largoVec;
-            bucket* aux;
-            bool meVoy = false;
-            while(!meVoy){
-                aux = vec[pos];
-                if(!aux){
-                    vec[pos]=new bucket(clave, valor);
-                    meVoy=true;
-                }else if(aux->estaBorrado){
-                    aux->estaBorrado=false;
-                    aux->clave = clave;
-                    aux->valor = valor;
-                    meVoy=true;
-                }else{
-                    pos=(pos+1)%largoVec;
-                }
-            }
+            bucket* nuevo = new bucket(clave, valor);
+            nuevo->sig = vec[pos];
+            vec[pos] = nuevo;
             cantidad++;
             fc=(float)cantidad/capacidad;
             if(fc>=0.7){
@@ -112,63 +93,53 @@ class Hash {
 
         bool Existe(K clave){
             int pos = abs(fHash(clave)) % largoVec, posInicial = pos;
-            bucket* aux;
-            while(true){
-                aux = vec[pos];
-                if(!aux){
-                    return false;
-                } else if(aux->estaBorrado || !fEq(aux->clave,clave)) {
-                    pos=(pos+1)%largoVec;
-                    if(pos == posInicial){
-                        return false;
-                    }
-                } else {
+            bucket* aux = vec[pos];
+            while(aux){
+                if(fEq(aux->clave,clave)){
                     return true;
                 }
+                aux = aux->sig;
             }
+            return false;
         }
 
         // Pre: Existe(clave)
         V Recuperar(K clave){
-            int pos = abs(fHash(clave)) % largoVec, posInicial = pos;
-            bucket* aux;
-            while(true){
-                aux = vec[pos];
-                if(aux->estaBorrado || !fEq(aux->clave,clave)) {
-                    pos=(pos+1)%largoVec;
-                } else {
-                    return aux->valor;
-                }
+            int pos = abs(fHash(clave)) % largoVec;
+            bucket* aux = vec[pos];
+            while(!fEq(aux->clave,clave)){
+                aux = aux->sig;
+                
             }
+            return aux->valor;
         }
 
         void Actualizar(K clave, V nuevoValor){
-            int pos = abs(fHash(clave)) % largoVec, posInicial = pos;
-            bucket* aux;
-            while(true){
-                aux = vec[pos];
-                if(aux->estaBorrado || !fEq(aux->clave,clave)) {
-                    pos=(pos+1)%largoVec;
-                } else {
-                    aux->valor = nuevoValor;
-                    return;
-                }
+            int pos = abs(fHash(clave)) % largoVec;
+            bucket* aux = vec[pos];
+            while(!fEq(aux->clave,clave)){
+                aux = aux->sig;
             }
+            aux->valor = nuevoValor;
         }
 
         // Pre: Existe(clave)
         void Borrar(K clave){
-            int pos = abs(fHash(clave)) % largoVec, posInicial = pos;
-            bucket* aux;
-            while(true){
-                aux = vec[pos];
-                if(aux->estaBorrado || !fEq(aux->clave,clave)) {
-                    pos=(pos+1)%largoVec;
-                } else {
-                    aux->estaBorrado=true;
-                    return;
-                }
+            int pos = abs(fHash(clave)) % largoVec;
+            bucket* aux = vec[pos];
+            bucket* ant = nullptr;
+            while(aux && !fEq(aux->clave,clave)){
+                ant = aux;
+                aux = aux->sig;
             }
+            if(ant){
+                ant->sig = aux->sig;
+            } else {
+                vec[pos] = aux->sig;
+            }
+            delete aux;
+            cantidad--; 
+            fc=(float)cantidad/capacidad;
         }
 
         void Mostrar(){
@@ -177,10 +148,12 @@ class Hash {
                 bucket* aux = vec[i];
                 if(!aux){
                     cout << "VACIO" << endl;
-                } else if(aux->estaBorrado){
-                    cout << "BORRADO" << endl;
                 } else {
-                    cout << "(" << aux->clave << "," << aux->valor << ")" << endl;
+                    while(aux){
+                        cout << "(" << aux->clave << "," << aux->valor << ") ";
+                        aux = aux->sig;
+                    }
+                    cout << endl;
                 }
             }
         }

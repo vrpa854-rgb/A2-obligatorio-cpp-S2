@@ -6,9 +6,15 @@
 
 using namespace std;
 
-int comparar(int a, int b) { return a < b ? -1 : (a > b ? 1 : 0); }
-int hashInt(int a) { return a; }
-bool igualInt(int a, int b) { return a == b; }
+int comparar(int a, int b) { 
+    return a - b; 
+}
+int hashInt(int a) { 
+    return a; 
+}
+bool igualInt(int a, int b) { 
+    return a == b;
+ }
 
 int main()
 {
