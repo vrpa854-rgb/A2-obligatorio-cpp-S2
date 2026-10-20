@@ -80,6 +80,7 @@ class Hash {
 
         // Pre: !Existe(clave)
         void Insertar(K clave, V valor){
+            //cout << "clave: " << clave << " valor " << valor << endl; 
             int pos = abs(fHash(clave)) % largoVec;
             bucket* nuevo = new bucket(clave, valor);
             nuevo->sig = vec[pos];
