@@ -56,3 +56,4 @@
 ## 2026-10-20 - Venancio Portillo
 - Probé el ejercicio 2. Pasa las pruebas y cumple los requerimientos.
 - Hice el ejercicio 4 con Orden topológico y heap. Pasó las pruebas.
+-Hice ajustes al ejercicio 3. Pasó las pruebas.

@@ -6,13 +6,13 @@
 
 using namespace std;
 
-int comparar(int a, int b) { 
-    return a - b; 
+int comparar(long long a, long long b) { 
+    return a < b ? -1 : a > b ? 1 : 0 ; 
 }
-int hashInt(int a) { 
+int hashInt(long long a) { 
     return a; 
 }
-bool igualInt(int a, int b) { 
+bool igualInt(long long a, long long b) { 
     return a == b;
  }
 
@@ -20,18 +20,18 @@ int main()
 {
     int cantidad;
     cin >> cantidad;
-    Heap<int> minHeap(cantidad, comparar, hashInt, igualInt);
+    Heap<long long> minHeap(cantidad, comparar, hashInt, igualInt);
     for (int i = 0; i < cantidad; i++) {
-        int valor;
+        long long valor;
         cin >> valor;
         minHeap.insertar(valor);
     }
 
-    int total = 0;
+    long long total = 0;
     while (minHeap.tamanio() > 1) {
-        int tope1 = minHeap.tope();
+        long long tope1 = minHeap.tope();
         minHeap.eliminar();
-        int tope2 = minHeap.tope();
+        long long tope2 = minHeap.tope();
         minHeap.eliminar();
         total += tope1 + tope2;
         minHeap.insertar(tope1 + tope2);
