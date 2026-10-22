@@ -61,3 +61,6 @@ Agregué una primera idea de la justificación de ordenes
 ## 2026-10-21 - Venancio Portillo
 - Hice el ejercicio 5 con Kruskal, pasó las pruebas. Para este ejercicio agregué el MFSet trabajado en clase.
 - Eliminé las funciones de Hash y Eq que estaban en el heap pensadas para la cola de prioridad extendida. Actualizé los ejercicios, volví a correr las pruebas y pasaron.
+
+## 2026-10-22 - Lucía Mottillo
+- Finalicé la justificación y autoría.
