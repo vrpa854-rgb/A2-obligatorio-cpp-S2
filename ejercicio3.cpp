@@ -9,18 +9,12 @@ using namespace std;
 int comparar(long long a, long long b) { 
     return a < b ? -1 : a > b ? 1 : 0 ; 
 }
-int hashInt(long long a) { 
-    return a; 
-}
-bool igualInt(long long a, long long b) { 
-    return a == b;
- }
 
 int main()
 {
     int cantidad;
     cin >> cantidad;
-    Heap<long long> minHeap(cantidad, comparar, hashInt, igualInt);
+    Heap<long long> minHeap(cantidad, comparar);
     for (int i = 0; i < cantidad; i++) {
         long long valor;
         cin >> valor;

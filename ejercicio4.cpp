@@ -12,8 +12,6 @@ struct Modulo {
     Modulo(int n, int p) : numero(n), prioridad(p) {}
 };
 
-int fHash(Modulo* m) { return m->numero; } 
-bool fEq(Modulo* a, Modulo* b) { return a->numero == b->numero; }
 int fComp(Modulo* a, Modulo* b) { 
     if (a->prioridad != b->prioridad) return a->prioridad < b->prioridad ? -1 : 1;
     if (a->numero != b->numero) return a->numero < b->numero ? -1 : 1;
@@ -42,7 +40,7 @@ int main()
         incidencias[w]++;
     }
  
-    Heap<Modulo*>* heap = new Heap<Modulo*>(v+a, fComp, fHash, fEq);
+    Heap<Modulo*>* heap = new Heap<Modulo*>(v+a, fComp);
     for(int i=1; i<=v; i++) {
         if(incidencias[i]==0) {
             heap->insertar(new Modulo{i, p[i]});
