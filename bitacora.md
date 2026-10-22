@@ -39,8 +39,8 @@
  Faltó correr las pruebas. Estoy armando los scritps para automatizarlas.
 
 ## 2026-10-07 - Venancio Portillo
-- Ajusté detalles y probé el ejercicio 1. Pasó todas las pruebas. Detecté por hacer que RANGO no es exactamente O(logK + R), consulté con el profe y me dijo que era válido ese orden si se utilizaba la recusión y se cortaban las ramas inecesarias de explorar. 
-- Agregué la justificación de ordenes del ejercicio 1.
+-Ajusté detalles y probé el ejercicio 1. Pasó todas las pruebas. Detecté por hacer que RANGO aún no valída O(logK + R),  falta cambiarlo.
+Agregué una primera idea de la justificación de ordenes
 
 ## 2026-10-12 - Lucía Mottillo
 - Agregué el TAD de heap como lo vimos en clase.
@@ -48,12 +48,3 @@
 
 ## 2026-10-14 - Lucía Mottillo
 - Empecé el ejercicio 2, estuve pensando cómo armar la función hash para que sea la más óptima posible y haya la menor canttidad de coalisiones. Mi idea inicial era sumar el valor de las letras (A - 1, B - 2, ..., Z - 26) pero hay varios valores que pueden tener el mismo resultado, luego se me ocurrió armar un array de bool de largo 26 y poner true cuando está la letra, pero no permite letras repetidas, por lo que concluí en un array de largo 26 de int, que pone la cantidad de veces que aparece una letra. A base de eso se arma la clave que se utiliza en la función hash junto con la regla de Horner.
-
-## 2026-10-15- Lucía Mottillo
-- Modifiqué el TAD de Hash, porque el que teníamos era para Hash cerrado y el ejercicio pide que sea abierto.
-- Hice el ejercicio 3.
-
-## 2026-10-20 - Venancio Portillo
-- Probé el ejercicio 2. Pasa las pruebas y cumple los requerimientos.
-- Hice el ejercicio 4 con Orden topológico y heap. Pasó las pruebas.
--Hice ajustes al ejercicio 3. Pasó las pruebas.
