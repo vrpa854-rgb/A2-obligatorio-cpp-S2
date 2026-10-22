@@ -8,15 +8,15 @@ class Heap{
         int cap;
         int primeroLibre; // int ultimoOcupado
         int (*fComp)(T,T);
-        Hash<T,int>* hashPosiciones;
+        //Hash<T,int>* hashPosiciones;
 
         void swap(int posA, int posB){
             T auxA = vec[posA];
             T auxB = vec[posB];
             vec[posA] = auxB;
             vec[posB] = auxA;
-            hashPosiciones->Actualizar(auxA, posB);
-            hashPosiciones->Actualizar(auxB, posA);
+            //hashPosiciones->Actualizar(auxA, posB);
+            //hashPosiciones->Actualizar(auxB, posA);
         }
 
         int comparar(int posA, int posB){
@@ -49,24 +49,24 @@ class Heap{
             hundir(posHijoMenor);
         }
 public:
-    Heap(int unaCap, int (*fComp)(T,T), int (*fHash)(T), bool (*fEq)(T,T)){
+    Heap(int unaCap, int (*fComp)(T,T)){
         // inicializar memoria
         primeroLibre = 1;// programo en funcion de si es 0 o 1 el primero de mi heap
         cap = unaCap;
         vec = new T[cap + 1];
         this->fComp=fComp;
-        this->hashPosiciones = new Hash<T,int>(this->cap, fHash, fEq);
+        //this->hashPosiciones = new Hash<T,int>(this->cap, fHash, fEq);
     }
     ~Heap(){
         // eliminar memoria
         delete[] vec;
-        delete hashPosiciones;
+        //delete hashPosiciones;
     }
 
     void insertar(T elemento){
         assert(primeroLibre <= cap);
         vec[primeroLibre] = elemento;
-        hashPosiciones->Insertar(elemento,primeroLibre);
+        //hashPosiciones->Insertar(elemento,primeroLibre);
         primeroLibre++;
         flotar(primeroLibre - 1);
     }
@@ -76,16 +76,17 @@ public:
         swap(1, primeroLibre - 1);
         primeroLibre--; // eliminar logicamente el ultimo elemento
         hundir(1);
-        hashPosiciones->Borrar(vec[primeroLibre]);
+        //hashPosiciones->Borrar(vec[primeroLibre]);
     }
 
-    void cambiarPrioridad(T elemento){
+ /*
+   void cambiarPrioridad(T elemento){
         int pos = hashPosiciones->Recuperar(elemento);
         vec[pos] = elemento;
         flotar(pos);
         hundir(pos);
     }
-
+*/
     int tamanio(){
         return primeroLibre - 1;
     }

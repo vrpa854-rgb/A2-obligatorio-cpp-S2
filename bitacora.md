@@ -56,4 +56,8 @@
 ## 2026-10-20 - Venancio Portillo
 - Probé el ejercicio 2. Pasa las pruebas y cumple los requerimientos.
 - Hice el ejercicio 4 con Orden topológico y heap. Pasó las pruebas.
--Hice ajustes al ejercicio 3. Pasó las pruebas.
+- Hice ajustes al ejercicio 3. Pasó las pruebas.
+
+## 2026-10-21 - Venancio Portillo
+- Hice el ejercicio 5 con Kruskal, pasó las pruebas. Para este ejercicio agregué el MFSet trabajado en clase.
+- Eliminé las funciones de Hash y Eq que estaban en el heap pensadas para la cola de prioridad extendida. Actualizé los ejercicios, volví a correr las pruebas y pasaron.
