@@ -1,6 +1,8 @@
 # Justificación de órdenes — Obligatorio 1
 
 ## Ejercicio 1
+- Implementar un único TAD árbol AVL parametrizado por tipo (template en C++, genérico en Java) e instanciarlo una vez por colección. No se acepta una implementación distinta por colección. / TAD implementado con template, como se solicitó.
+
 - ALTA y BUSCAR en orden temporal O(logK) en el peor caso, siendo K la cantidad de piezas registradas en esa colección al momento de ejecutar la operación. / Justificación: La acción ALTA y BUSCAR se realizan con los método Insertar y Existe del AVL, respectivamente. Estas dos operaciones son O(logK) PC porque es el orden de insertar y buscar un elemento en un AVL.
 
 - RANGO en orden temporal O(logK+R) en el peor caso, siendo R la cantidad de piezas que esa consulta reporta. / Justificación: Se utilizó como referencia la operación InOrden que es O(logK) en caso promedio. Como sigue la misma lógica, es del mismo orden. Recortamos el árbol según el rango buscado para que la función solo recorra R 
