@@ -29,29 +29,8 @@ int main() {
         if(!hayPares && cantidades[a] >= 2) hayPares = true;
     }
 
-    /*
-    cout << "Cantidades " << endl;
-    for(int k=0; k<=1000; k++) {
-        if(cantidades[k] > 0) {
-            cout << k << " " << cantidades[k] << endl;    
-        }
-    }
-    cout << "Terminé cantidades" << endl;
-    */
-    
-    //Iterar entre los N números
-        //Detectar A, siendo A el que tiene mayor cantidad y que tiene una cantidad mayor a 2
-        //Guardar A como solución
-        //Resto cantidad de A en 2
-
-        //Busco B siendo B la cantidad del medio
-
-
-    //cout << hayPares << endl;
     int posRes = 0;
     if(hayPares) {
-        //Itero por N veces y obtengo primero el de mayor cantidad
-        //En caso de ser iguales, tomo el mayor
         for(int i=1; i<=n; i++) {//OT(N)
             int idxMaxPares = -1;
             for(int k=0; k<=1000; k++) { //OT(1)
@@ -83,9 +62,7 @@ int main() {
     if(placaCentro != -1) {
         cout << placaCentro; 
         if(hayPares) cout << " ";
-    } 
- 
-    //cout << "medio" << endl;
+    }
 
     if(hayPares) {
         for(int i=posRes-1; i>=0; i--) {
