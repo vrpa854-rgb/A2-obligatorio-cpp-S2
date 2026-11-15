@@ -20,18 +20,18 @@ int calcLikes(int ronda, int ventaja, int baileAnterior) {
         return memo[ronda][ventaja][baileAnterior];
     }
 
-    int ventajaTrasA = ventaja + convierteA[ronda];
+    int ventajaA = ventaja + convierteA[ronda];
 
-    int mejor = calcLikes(ronda + 1, ventajaTrasA, 0);
+    int mejor = calcLikes(ronda + 1, ventajaA, 0);
 
-    if (ventajaTrasA >= 1) {
+    if (ventajaA >= 1) {
         int likesGanados;
         if (baileAnterior == 0) {
             likesGanados = likes[ronda];
         } else {
             likesGanados = likes[ronda] / 2;
         }
-        mejor = max(mejor, likesGanados + calcLikes(ronda + 1, ventajaTrasA - 1, 1));
+        mejor = max(mejor, likesGanados + calcLikes(ronda + 1, ventajaA - 1, 1));
     }
 
     memo[ronda][ventaja][baileAnterior] = mejor;
