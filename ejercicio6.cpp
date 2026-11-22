@@ -1,7 +1,6 @@
 #include <string>
 #include <iostream>
 #include <limits>
-#include "./tads/Hash.cpp"
 
 using namespace std;
 
@@ -75,4 +74,5 @@ int main() {
     delete[] res;
     delete[] cantidades;
     delete[] placas;
+    return 0;
 }
