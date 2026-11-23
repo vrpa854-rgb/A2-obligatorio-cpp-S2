@@ -4,7 +4,7 @@
 
 ## 2026-11-14 - Lucía Mottillo
 - Empecé el ejercicio 9. Me basé en el ejercicio de la mochila visto en clase pero lo ajusto para que sirva.
-- Modifico que no tiene un tamaño fijo.
+- Modifico que no tiene un tamaño fijo. En lugar de usar tabulación, utilizo memoización.
 
 ## 2026-11-15 - Lucía Mottillo
 - Finalizo el ejercicio 9.
